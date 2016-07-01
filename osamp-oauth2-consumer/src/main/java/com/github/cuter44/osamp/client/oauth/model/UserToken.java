@@ -1,26 +1,24 @@
-package com.github.cuter44.osamp.as.oauth.model;
+package com.github.cuter44.osamp.client.oauth.model;
 
 import java.util.Set;
 import java.util.HashSet;
 
 import org.apache.oltu.oauth2.common.token.*;
-import org.apache.oltu.oauth2.common.domain.client.*;
-import com.github.cuter44.osamp.as.local.model.*;
 
-public class IssuedToken extends BasicOAuthToken
+import com.github.cuter44.osamp.client.local.model.*;
+
+
+
+public class UserToken extends BasicOAuthToken
 {
   // FIELDS
-	public Long id;
+    public Long id;
 
-	public LocalCredential localCred;
-    public ClientInfo clientInfo;
+    public LocalCredential localCred;
+    public String remotePrincipal;
 
-    public String code;
-    public Set<String> scopes;
-
-    public Boolean validity;
     public Long issuedAt;
-
+    public Set<String> scopes;
 
   // ACCESSORS
     public Long getId()
@@ -47,26 +45,26 @@ public class IssuedToken extends BasicOAuthToken
         return;
     }
 
-    public ClientInfo getClientInfo()
+    public String getRemotePrincipal()
     {
-        return(this.clientInfo);
+        return(this.remotePrincipal);
     }
 
-    public void setClientInfo(ClientInfo clientInfo)
+    public void setRemotePrincipal(String remotePrincipal)
     {
-        this.clientInfo = clientInfo;
+        this.remotePrincipal = remotePrincipal;
 
         return;
     }
 
-    public String getCode()
+    public Long getIssuedAt()
     {
-        return(this.code);
+        return(this.issuedAt);
     }
 
-    public void setCode(String code)
+    public void setIssuedAt(Long issuedAt)
     {
-        this.code = code;
+        this.issuedAt = issuedAt;
 
         return;
     }
@@ -104,47 +102,21 @@ public class IssuedToken extends BasicOAuthToken
         return;
     }
 
-    public Long getIssuedAt()
-    {
-        return(this.issuedAt);
-    }
-
-    public void setIssuedAt(Long issuedAt)
-    {
-        this.issuedAt = issuedAt;
-
-        return;
-    }
-
-    public Boolean getValidity()
-    {
-        return(this.validity);
-    }
-
-    public void setValidity(Boolean validity)
-    {
-        this.validity = validity;
-
-        return;
-    }
-
-
   // CONSTRUCTORS
 
-    public IssuedToken()
+    public UserToken()
     {
-        this.validity = false;
         this.scopes = new HashSet<String>();
 
         return;
     }
 
-    public IssuedToken(LocalCredential localCred, ClientInfo clientInfo)
+    public UserToken(LocalCredential localCred, String remotePrincipal)
     {
         this();
 
         this.setLocalCred(localCred);
-        this.setClientInfo(clientInfo);
+        this.setRemotePrincipal(remotePrincipal);
 
         return;
     }
@@ -159,7 +131,7 @@ public class IssuedToken extends BasicOAuthToken
         hash = prime * hash + ((id == null) ? 0 : id.hashCode());
         hash = prime * hash + ((accessToken == null) ? 0 : accessToken.hashCode());
         hash = prime * hash + ((localCred == null) ? 0 : localCred.hashCode());
-        hash = prime * hash + ((clientInfo == null) ? 0 : clientInfo.hashCode());
+        hash = prime * hash + ((remotePrincipal == null) ? 0 : remotePrincipal.hashCode());
 
         return hash;
     }
@@ -173,7 +145,7 @@ public class IssuedToken extends BasicOAuthToken
         if (o==null || !this.getClass().equals(o.getClass()))
             return false;
 
-        IssuedToken s = (IssuedToken) o;
+        UserToken s = (UserToken) o;
 
         return(
             (
@@ -196,8 +168,8 @@ public class IssuedToken extends BasicOAuthToken
             )
             &&
             (
-                (this.clientInfo == s.clientInfo) ||
-                (this.clientInfo != null && this.clientInfo.equals(s.clientInfo))
+                (this.remotePrincipal == s.remotePrincipal) ||
+                (this.remotePrincipal != null && this.remotePrincipal.equals(s.remotePrincipal))
             )
         );
     }
@@ -214,4 +186,7 @@ public class IssuedToken extends BasicOAuthToken
             )
         );
     }
+
 }
+
+

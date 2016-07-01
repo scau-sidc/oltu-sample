@@ -23,6 +23,27 @@
 
 
   <dependencies>
+    <dependency>
+      <groupId>org.apache.oltu.oauth2</groupId>
+      <artifactId>org.apache.oltu.oauth2.client</artifactId>
+      <version>1.0.2</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.oltu.oauth2</groupId>
+      <artifactId>org.apache.oltu.oauth2.dynamicreg.client</artifactId>
+      <version>1.0.2</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.oltu.oauth2</groupId>
+      <artifactId>org.apache.oltu.oauth2.common</artifactId>
+      <version>1.0.2</version>
+      <scope>compile</scope>
+    </dependency>
+
   </dependencies>
 
 </project>

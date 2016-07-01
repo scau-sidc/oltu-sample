@@ -1,4 +1,4 @@
-package com.github.cuter44.osamp.as.local.servlet;
+package com.github.cuter44.osamp.client.oauth.servlet;
 
 import java.io.IOException;
 import javax.servlet.*;
@@ -7,10 +7,10 @@ import javax.servlet.annotation.*;
 
 import static com.github.cuter44.nyafx.servlet.ParamsX.*;
 
-import static com.github.cuter44.osamp.as.Constants.*;
-import static com.github.cuter44.osamp.as.sys.servlet.Jsonizer.*;
-import com.github.cuter44.osamp.as.local.model.*;
-import com.github.cuter44.osamp.as.local.dao.*;
+import static com.github.cuter44.osamp.client.Constants.*;
+import static com.github.cuter44.osamp.client.sys.servlet.Jsonizer.*;
+import com.github.cuter44.osamp.client.local.model.*;
+import com.github.cuter44.osamp.client.local.dao.*;
 
 /** 本地用户登录.
  *

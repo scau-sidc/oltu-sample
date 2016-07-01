@@ -127,7 +127,7 @@ public class IssuedTokenDao
     }
 
   // CLIENT INFO
-    public synchronized IssuedToken createCode(IssuedToken code)
+    public IssuedToken createCode(IssuedToken code)
     {
         if (this.codes.containsKey(code.getCode()))
             throw(new IllegalArgumentException("Code duplicated."));
@@ -137,7 +137,7 @@ public class IssuedTokenDao
         return(code);
     }
 
-    public synchronized IssuedToken createToken(IssuedToken token)
+    public IssuedToken createToken(IssuedToken token)
     {
         Participators op = new Participators(token);
 
@@ -162,4 +162,23 @@ public class IssuedTokenDao
             this.tokens.get(new Participators(clientId, principal))
         );
     }
+
+    public void removeCode(String code)
+    {
+        this.codes.remove(code);
+
+        return;
+    }
+
+    //public IssuedToken createToken(IssuedToken token)
+    //{
+        //Participators op = new Participators(token);
+
+        //if (this.tokens.containsKey(op))
+            //throw(new IllegalArgumentException("Token existed already."));
+
+        //this.tokens.put(op, token);
+
+        //return(token);
+    //}
 }

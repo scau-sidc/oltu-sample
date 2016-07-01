@@ -1,4 +1,4 @@
-package com.github.cuter44.osamp.as.sys.servlet;
+package com.github.cuter44.osamp.client.sys.servlet;
 
 import java.io.*;
 import javax.servlet.*;
@@ -7,7 +7,7 @@ import javax.servlet.annotation.*;
 import java.util.Map;
 import java.util.HashMap;
 
-import static com.github.cuter44.osamp.as.Constants.*;
+import static com.github.cuter44.osamp.client.Constants.*;
 
 /** The Error Parser.
  *

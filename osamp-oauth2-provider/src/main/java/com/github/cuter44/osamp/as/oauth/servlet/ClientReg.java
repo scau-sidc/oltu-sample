@@ -14,19 +14,19 @@ import org.apache.oltu.oauth2.ext.dynamicreg.server.request.*;
 import org.apache.oltu.oauth2.ext.dynamicreg.server.response.*;
 import org.apache.oltu.oauth2.common.domain.client.*;
 
-import static com.github.cuter44.osamp.as.oauth.dao.Cast.toBasicClientInfo;
 import static com.github.cuter44.osamp.as.sys.servlet.Jsonizer.*;
 import static com.github.cuter44.osamp.as.Constants.*;
 import com.github.cuter44.osamp.as.oauth.dao.*;
 import com.github.cuter44.osamp.as.oauth.core.*;
-import static com.github.cuter44.osamp.as.oauth.core.OAuthResponseTranscriber.*;
+import static com.github.cuter44.osamp.as.sys.oltu.OAuthResponseTranscriber.*;
+import static com.github.cuter44.osamp.as.sys.oltu.OAuthRequestTranscriber.*;
 
 /** 创建 Consumer/Clients.
  *
  * <pre style="font-size:12px">
 
     <strong>请求</strong>
-    POST /oauth2/clients/new
+    POST /oauth2/client/reg
 
     <strong>参数</strong>
     <i>(none)</i>
@@ -49,8 +49,8 @@ import static com.github.cuter44.osamp.as.oauth.core.OAuthResponseTranscriber.*;
  * </pre>
  *
  */
-@WebServlet("/oauth2/clients/new")
-public class AddClient extends HttpServlet
+@WebServlet("/oauth2/client/reg")
+public class ClientReg extends HttpServlet
 {
     //protected OAuthIssuerImpl   oauthIssuer;
     protected ClientInfoDao     clientDao;
@@ -85,11 +85,11 @@ public class AddClient extends HttpServlet
                     .status(HttpServletResponse.SC_OK)
                     .setClientId(i.getClientId())
                     .setClientSecret(i.getClientSecret())
-                    .setIssuedAt(Long.toString(i.getIssuedAt()))
-                    .setExpiresIn(i.getExpiresIn())
+                    //.setIssuedAt(Long.toString(i.getIssuedAt()))
+                    //.setExpiresIn(i.getExpiresIn())
                     .buildJSONMessage();
 
-                toServletResp(resp, oresp);
+                toServletRespJson(resp, oresp);
             }
             catch (OAuthProblemException ex)
             {
@@ -98,7 +98,7 @@ public class AddClient extends HttpServlet
                     .error(ex)
                     .buildJSONMessage();
 
-                toServletResp(resp, oresp);
+                toServletRespJson(resp, oresp);
             }
         }
         catch (Exception ex)

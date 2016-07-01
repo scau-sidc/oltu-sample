@@ -1,4 +1,4 @@
-package com.github.cuter44.osamp.as.oauth.core;
+package com.github.cuter44.osamp.as.sys.oltu;
 
 import java.util.Map;
 import java.io.IOException;
@@ -20,6 +20,16 @@ public class OAuthResponseTranscriber
         resp.getWriter().write(
             oresp.getBody()
         );
+
+        return(resp);
+    }
+
+    public static HttpServletResponse toServletRespJson(HttpServletResponse resp, OAuthResponse oresp)
+        throws IOException
+    {
+        toServletResp(resp, oresp);
+
+        resp.setContentType("application/json");
 
         return(resp);
     }
